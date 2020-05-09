@@ -1,5 +1,5 @@
 on: push
-name: npm build and publish dockerhub
+name: npm build and publish docker
 jobs:
   build-and-publish:
     name: build and publish
