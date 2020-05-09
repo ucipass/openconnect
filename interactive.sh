@@ -2,6 +2,7 @@
 # docker run --rm -e HOST=<HOST> -e USER=<USER> --name oc -it -p 3128:3128 -p 2222:22 --privileged ucipass/openconnect 
 # ssh -o 'StrictHostKeyChecking no' -o 'UserKnownHostsFile=/dev/null' -p 2222 root@localhost
 
+
 passwd -d root
 ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa
 ssh-keygen -f /etc/ssh/ssh_host_dsa_key -N '' -t dsa
