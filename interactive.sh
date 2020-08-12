@@ -17,5 +17,18 @@ echo AllowTcpForwarding local >> /etc/ssh/sshd_config
 PROXY_PORT=3128 node /root/proxy.js &
 /usr/sbin/sshd
 echo "All services started!"
-openconnect --csd-user=root --csd-wrapper=/root/.cisco/csd-wrapper.sh -b $HOST
+if [ -n "$HOST" ] && [ -n "$USER" ]
+    then
+    echo "ENV:HOST,USER"
+    openconnect --csd-user=root --csd-wrapper=/root/.cisco/csd-wrapper.sh --user=$USER -b $HOST
+
+elif [ -n "$HOST" ]
+    then
+    echo "HOST ENV"
+    openconnect --csd-user=root --csd-wrapper=/root/.cisco/csd-wrapper.sh -b $HOST
+else
+   echo "NO HOST ENVIRONMENT VARIABLE SET! Aborting...."
+fi
+
+
 tail -f /dev/null
